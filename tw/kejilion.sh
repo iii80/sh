@@ -3494,7 +3494,7 @@ ldnmp_Proxy_backend_stream() {
 
 	docker exec nginx nginx -s reload
 	clear
-	echo "您的 $webname搭建好了！"
+	echo "您的$webname搭建好了！"
 	echo "------------------------"
 	echo "訪問地址:"
 	ip_address
