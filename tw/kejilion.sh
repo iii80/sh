@@ -317,7 +317,7 @@ stop() {
 status() {
 	systemctl status "$1"
 	if [ $? -eq 0 ]; then
-		echo "$1 服务状态已显示。"
+		echo "$1服務狀態已顯示。"
 	else
 		echo "錯誤：無法顯示$1服務狀態。"
 	fi
@@ -2095,7 +2095,7 @@ web_security() {
 					  echo "到cf後台右上角我的個人資料，選擇左側API令牌，取得Global API Key"
 					  echo "https://dash.cloudflare.com/login"
 					  read -e -p "輸入CF的帳號:" cfuser
-					  read -e -p "輸入CF的Global API Key:" cftoken
+					  read -e -p "输入CF的Global API Key: " cftoken
 
 					  wget -O /home/web/conf.d/default.conf ${gh_proxy}raw.githubusercontent.com/kejilion/nginx/main/default11.conf
 					  docker exec nginx nginx -s reload
@@ -3425,11 +3425,11 @@ stream_panel() {
 				install nano
 				nano /home/web/stream.d/$stream_name.conf
 				docker restart nginx
-				send_stats "修改四層代理"
+				send_stats "修改四层代理"
 				;;
 			6)
 				send_stats "刪除轉送配置"
-				read -e -p "請輸入你要刪除的服務名稱:" stream_name
+				read -e -p "请输入你要删除的服务名: " stream_name
 				rm /home/web/stream.d/$stream_name.conf > /dev/null 2>&1
 				docker restart nginx
 				send_stats "刪除四層代理"
@@ -3998,7 +3998,7 @@ generate_access_urls() {
 		fi
 	done
 
-	# 只在有有效端口时显示标题和内容
+	# 只在有有效連接埠時顯示標題和內容
 	if [ "$has_valid_ports" = true ]; then
 		echo "FRP服務對外存取位址:"
 
@@ -5051,12 +5051,12 @@ bbrv3() {
 				  clear
 				  local kernel_version=$(uname -r)
 				  echo "您已安裝xanmod的BBRv3內核"
-				  echo "当前内核版本: $kernel_version"
+				  echo "當前核心版本:$kernel_version"
 
 				  echo ""
 				  echo "核心管理"
 				  echo "------------------------"
-				  echo "1. 更新BBRv3内核              2. 卸载BBRv3内核"
+				  echo "1. 更新BBRv3內核 2. 卸載BBRv3內核"
 				  echo "------------------------"
 				  echo "0. 返回上一級選單"
 				  echo "------------------------"
@@ -5333,9 +5333,9 @@ clamav() {
 		  while true; do
 				clear
 				echo "clamav病毒掃描工具"
-				echo "影片介紹: https://www.bilibili.com/video/BV1TqvZe4EQm?t=0.1"
+				echo "视频介绍: https://www.bilibili.com/video/BV1TqvZe4EQm?t=0.1"
 				echo "------------------------"
-				echo "是一個開源的防毒軟體工具，主要用於偵測和刪除各種類型的惡意軟體。"
+				echo "是一个开源的防病毒软件工具，主要用于检测和删除各种类型的恶意软件。"
 				echo "包括病毒、木馬、間諜軟體、惡意腳本和其他有害軟體。"
 				echo "------------------------"
 				echo -e "${gl_lv}1. 全盤掃描${gl_bai}             ${gl_huang}2. 重要目錄掃描${gl_bai}            ${gl_kjlan}3. 自訂目錄掃描${gl_bai}"
@@ -5506,7 +5506,7 @@ restore_defaults() {
 
 # 網站建置優化函數
 optimize_web_server() {
-	echo -e "${gl_lv}切换到网站搭建优化模式...${gl_bai}"
+	echo -e "${gl_lv}切換到網站建置優化模式...${gl_bai}"
 
 	echo -e "${gl_lv}優化檔案描述符...${gl_bai}"
 	ulimit -n 65535
@@ -5651,7 +5651,7 @@ update_locale() {
 				;;
 		esac
 	else
-		echo "不支援的系統，無法辨識系統類型。"
+		echo "不支持的系统，无法识别系统类型。"
 		break_end
 	fi
 }
@@ -6109,7 +6109,7 @@ use_connection() {
 	else
 		# 使用密碼連接
 		if ! command -v sshpass &> /dev/null; then
-			echo "錯誤：未安裝 sshpass，請先安裝 sshpass。"
+			echo "错误：未安装 sshpass，请先安装 sshpass。"
 			echo "安裝方法："
 			echo "  - Ubuntu/Debian: apt install sshpass"
 			echo "  - CentOS/RHEL: yum install sshpass"
@@ -6603,8 +6603,8 @@ rsync_manager() {
 		view_tasks
 		echo
 		echo "1. 建立新任務 2. 刪除任務"
-		echo "3. 執行本地同步到遠端 4. 執行遠端同步到本地"
-		echo "5. 建立定時任務 6. 刪除定時任務"
+		echo "3. 执行本地同步到远端         4. 执行远端同步到本地"
+		echo "5. 创建定时任务               6. 删除定时任务"
 		echo "---------------------------------"
 		echo "0. 返回上一級選單"
 		echo "---------------------------------"
@@ -6742,7 +6742,7 @@ linux_tools() {
 	  echo -e "${gl_kjlan}------------------------"
 	  echo -e "${gl_kjlan}11.  ${gl_bai}btop 現代化監控工具${gl_huang}★${gl_bai}             ${gl_kjlan}12.  ${gl_bai}ranger 檔案管理工具"
 	  echo -e "${gl_kjlan}13.  ${gl_bai}ncdu 磁碟佔用檢視工具${gl_kjlan}14.  ${gl_bai}fzf 全域搜尋工具"
-	  echo -e "${gl_kjlan}15.  ${gl_bai}vim 文字編輯器${gl_kjlan}16.  ${gl_bai}nano 文本编辑器 ${gl_huang}★${gl_bai}"
+	  echo -e "${gl_kjlan}15.  ${gl_bai}vim 文字編輯器${gl_kjlan}16.  ${gl_bai}nano 文字編輯器${gl_huang}★${gl_bai}"
 	  echo -e "${gl_kjlan}17.  ${gl_bai}git 版本控制系統"
 	  echo -e "${gl_kjlan}------------------------"
 	  echo -e "${gl_kjlan}21.  ${gl_bai}駭客任務螢幕保${gl_kjlan}22.  ${gl_bai}跑火車屏保"
@@ -7739,18 +7739,18 @@ linux_test() {
 		  15)
 			  clear
 			  send_stats "nxtrace指定IP回程測試腳本"
-			  echo "可参考的IP列表"
+			  echo "可參考的IP列表"
 			  echo "------------------------"
 			  echo "北京電信: 219.141.136.12"
 			  echo "北京聯通: 202.106.50.1"
 			  echo "北京移動: 221.179.155.161"
 			  echo "上海電信: 202.96.209.133"
 			  echo "上海聯通: 210.22.97.1"
-			  echo "上海移动: 211.136.112.200"
-			  echo "广州电信: 58.60.188.222"
+			  echo "上海移動: 211.136.112.200"
+			  echo "廣州電信: 58.60.188.222"
 			  echo "廣州聯通: 210.21.196.6"
 			  echo "廣州移動: 120.196.165.24"
-			  echo "成都电信: 61.139.2.69"
+			  echo "成都電信: 61.139.2.69"
 			  echo "成都聯通: 119.6.6.6"
 			  echo "成都移動: 211.137.96.205"
 			  echo "湖南電信: 36.111.200.100"
@@ -8221,15 +8221,15 @@ linux_ldnmp() {
 	  echo "使用者名稱: admin"
 	  echo "密碼: admin"
 	  echo "------------------------"
-	  echo "登录时右上角如果出现红色error0请使用如下命令: "
-	  echo "我也很气愤独角数卡为啥这么麻烦，会有这样的问题！"
+	  echo "登入時右上角如果出現紅色error0請使用下列指令:"
+	  echo "我也很氣憤獨角數卡為啥這麼麻煩，會有這樣的問題！"
 	  echo "sed -i 's/ADMIN_HTTPS=false/ADMIN_HTTPS=true/g' /home/web/html/$yuming/dujiaoka/.env"
 
 		;;
 
 	  7)
 	  clear
-	  # flarum论坛
+	  # flarum論壇
 	  webname="flarum论坛"
 	  send_stats "安裝$webname"
 	  echo "開始部署$webname"
@@ -8273,8 +8273,8 @@ linux_ldnmp() {
 	  echo "資料庫名稱:$dbname"
 	  echo "使用者名稱:$dbuse"
 	  echo "密碼:$dbusepasswd"
-	  echo "表前缀: flarum_"
-	  echo "管理员信息自行设置"
+	  echo "表字首: flarum_"
+	  echo "管理員資訊自行設定"
 
 		;;
 
@@ -8446,7 +8446,7 @@ linux_ldnmp() {
 			  echo
 			  ;;
 		  2)
-			  echo "資料庫備份必須是.gz結尾的壓縮包。請放到/home/目錄下，支援寶塔/1panel備份資料導入。"
+			  echo "資料庫備份必須是.gz結尾的壓縮包。请放到/home/目录下，支持宝塔/1panel备份数据导入。"
 			  read -e -p "也可以輸入下載鏈接，遠端下載備份數據，直接回車將跳過遠端下載：" url_download_db
 
 			  cd /home/
@@ -9017,7 +9017,7 @@ while true; do
 	  echo -e "${gl_kjlan}7.   ${color7}哪吒探針VPS監控面板${gl_kjlan}8.   ${color8}QB離線BT磁力下載面板"
 	  echo -e "${gl_kjlan}9.   ${color9}Poste.io郵件伺服器程式${gl_kjlan}10.  ${color10}RocketChat多人線上聊天系統"
 	  echo -e "${gl_kjlan}------------------------"
-	  echo -e "${gl_kjlan}11.  ${color11}禪道專案管理軟體${gl_kjlan}12.  ${color12}青龙面板定时任务管理平台"
+	  echo -e "${gl_kjlan}11.  ${color11}禪道專案管理軟體${gl_kjlan}12.  ${color12}青龍面板定時任務管理平台"
 	  echo -e "${gl_kjlan}13.  ${color13}Cloudreve網盤${gl_huang}★${gl_bai}                     ${gl_kjlan}14.  ${color14}簡單圖床圖片管理程序"
 	  echo -e "${gl_kjlan}15.  ${color15}emby多媒體管理系統${gl_kjlan}16.  ${color16}Speedtest測速板"
 	  echo -e "${gl_kjlan}17.  ${color17}AdGuardHome去廣告軟體${gl_kjlan}18.  ${color18}onlyoffice線上辦公OFFICE"
@@ -9035,7 +9035,7 @@ while true; do
 	  echo -e "${gl_kjlan}37.  ${color37}MyIP工具箱${gl_huang}★${gl_bai}                        ${gl_kjlan}38.  ${color38}小雅alist全家桶"
 	  echo -e "${gl_kjlan}39.  ${color39}Bililive直播錄影工具${gl_kjlan}40.  ${color40}webssh網頁版SSH連線工具"
 	  echo -e "${gl_kjlan}------------------------"
-	  echo -e "${gl_kjlan}41.  ${color41}耗子管理面板${gl_kjlan}42.  ${color42}Nexterm远程连接工具"
+	  echo -e "${gl_kjlan}41.  ${color41}耗子管理面板${gl_kjlan}42.  ${color42}Nexterm遠端連線工具"
 	  echo -e "${gl_kjlan}43.  ${color43}RustDesk遠端桌面(服務端)${gl_huang}★${gl_bai}          ${gl_kjlan}44.  ${color44}RustDesk遠端桌面(中繼端)${gl_huang}★${gl_bai}"
 	  echo -e "${gl_kjlan}45.  ${color45}Docker加速站${gl_kjlan}46.  ${color46}GitHub加速站${gl_huang}★${gl_bai}"
 	  echo -e "${gl_kjlan}47.  ${color47}普羅米修斯監控${gl_kjlan}48.  ${color48}普羅米修斯(主機監控)"
@@ -9071,8 +9071,8 @@ while true; do
 	  echo -e "${gl_kjlan}97.  ${color97}WireGuard組網(服務端)${gl_kjlan}98.  ${color98}WireGuard組網(客戶端)"
 	  echo -e "${gl_kjlan}99.  ${color99}DSM群暉虛擬機${gl_kjlan}100. ${color100}Syncthing點對點檔案同步工具"
 	  echo -e "${gl_kjlan}------------------------"
-	  echo -e "${gl_kjlan}101. ${color101}AI影片產生工具${gl_kjlan}102. ${color102}VoceChat多人線上聊天系統"
-	  echo -e "${gl_kjlan}103. ${color103}Umami網站統計工具${gl_kjlan}104. ${color104}Stream四層代理轉送工具"
+	  echo -e "${gl_kjlan}101. ${color101}AI视频生成工具                      ${gl_kjlan}102. ${color102}VoceChat多人線上聊天系統"
+	  echo -e "${gl_kjlan}103. ${color103}Umami网站统计工具                   ${gl_kjlan}104. ${color104}Stream四層代理轉送工具"
 	  echo -e "${gl_kjlan}105. ${color105}思源筆記${gl_kjlan}106. ${color106}Drawnix開源白板工具"
 	  echo -e "${gl_kjlan}107. ${color107}PanSou網盤搜尋"
 	  echo -e "${gl_kjlan}------------------------"
@@ -12045,7 +12045,7 @@ while true; do
 
 		docker_rum() {
 
-		read -e -p  "請輸入組網的用戶端數量 (預設 5):" COUNT
+		read -e -p  "请输入组网的客户端数量 (默认 5): " COUNT
 		COUNT=${COUNT:-5}
 		read -e -p  "請輸入 WireGuard 網段 (預設 10.13.13.0):" NETWORK
 		NETWORK=${NETWORK:-10.13.13.0}
@@ -12127,7 +12127,7 @@ while true; do
 		echo -e "${gl_lv}${COUNT}個客戶端配置全部輸出，使用方法如下：${gl_bai}"
 		echo -e "${gl_lv}1. 手機下載wg的APP，掃描上方二維碼，可快速連接網絡${gl_bai}"
 		echo -e "${gl_lv}2. Windows下載客戶端，複製設定碼連接網路。${gl_bai}"
-		echo -e "${gl_lv}3. Linux用脚本部署WG客户端，复制配置代码连接网络。${gl_bai}"
+		echo -e "${gl_lv}3. Linux用腳本部署WG客戶端，複製設定碼連接網路。${gl_bai}"
 		echo -e "${gl_lv}官方客戶端下載方式: https://www.wireguard.com/install/${gl_bai}"
 		break_end
 
@@ -12969,7 +12969,7 @@ EOF
 						break
 					else
 						echo "連接埠號碼無效，請輸入1到65535之間的數字。"
-						send_stats "输入无效SSH端口"
+						send_stats "輸入無效SSH端口"
 						break_end
 					fi
 				else
@@ -13186,7 +13186,7 @@ EOF
 
 						  ;;
 					  5)
-					   read -e -p "请输入要删除的用户名: " username
+					   read -e -p "請輸入要刪除的使用者名稱:" username
 					   # 刪除使用者及其主目錄
 					   userdel -r "$username"
 						  ;;
@@ -13569,7 +13569,7 @@ EOF
 			while true; do
 				clear
 				echo "限流關機功能"
-				echo "视频介绍: https://www.bilibili.com/video/BV1mC411j7Qd?t=0.1"
+				echo "影片介紹: https://www.bilibili.com/video/BV1mC411j7Qd?t=0.1"
 				echo "------------------------------------------------"
 				echo "目前流量使用情況，重啟伺服器流量計算會清除！"
 				output_status
@@ -14028,12 +14028,12 @@ linux_file() {
 		ls --color=auto -x
 		echo "------------------------"
 		echo "1. 進入目錄 2. 建立目錄 3. 修改目錄權限 4. 重新命名目錄"
-		echo "5. 刪除目錄 6. 返回上一層選單目錄"
+		echo "5.  删除目录           6.  返回上一级选单目录"
 		echo "------------------------"
-		echo "11. 建立文件 12. 編輯文件 13. 修改文件權限 14. 重新命名文件"
+		echo "11. 创建文件           12. 编辑文件             13. 修改文件权限         14. 重命名文件"
 		echo "15. 刪除文件"
 		echo "------------------------"
-		echo "21. 壓縮檔案目錄 22. 解壓縮檔案目錄 23. 行動檔案目錄 24. 複製檔案目錄"
+		echo "21. 压缩文件目录       22. 解压文件目录         23. 移动文件目录         24. 复制文件目录"
 		echo "25. 傳文件至其他伺服器"
 		echo "------------------------"
 		echo "0. 返回上一級選單"
@@ -14043,7 +14043,7 @@ linux_file() {
 		case "$Limiting" in
 			1)  # 进入目录
 				read -e -p "請輸入目錄名:" dirname
-				cd "$dirname" 2>/dev/null || echo "无法进入目录"
+				cd "$dirname" 2>/dev/null || echo "無法進入目錄"
 				send_stats "進入目錄"
 				;;
 			2)  # 创建目录
@@ -14172,29 +14172,29 @@ linux_file() {
 				read -e -p "請輸入遠端伺服器使用者名稱 (預設root):" remote_user
 				remote_user=${remote_user:-root}
 
-				read -e -p "请输入远端服务器密码: " -s remote_password
+				read -e -p "請輸入遠端伺服器密碼:" -s remote_password
 				echo
 				if [ -z "$remote_password" ]; then
-					echo "错误: 请输入远端服务器密码。"
-					send_stats "传送文件失败: 未输入远端服务器密码"
+					echo "錯誤: 請輸入遠端伺服器密碼。"
+					send_stats "傳送檔案失敗: 未輸入遠端伺服器密碼"
 					continue
 				fi
 
-				read -e -p "请输入登录端口 (默认22): " remote_port
+				read -e -p "請輸入登入連接埠 (預設22):" remote_port
 				remote_port=${remote_port:-22}
 
-				# 清除已知主机的旧条目
+				# 清除已知主機的舊條目
 				ssh-keygen -f "/root/.ssh/known_hosts" -R "$remote_ip"
 				sleep 2  # 等待时间
 
-				# 使用scp传输文件
+				# 使用scp傳輸文件
 				scp -P "$remote_port" -o StrictHostKeyChecking=no "$file_to_transfer" "$remote_user@$remote_ip:/home/" <<EOF
 $remote_password
 EOF
 
 				if [ $? -eq 0 ]; then
 					echo "檔案已傳送至遠端伺服器home目錄。"
-					send_stats "文件传送成功"
+					send_stats "文件傳送成功"
 				else
 					echo "文件傳送失敗。"
 					send_stats "文件傳送失敗"
@@ -14384,7 +14384,7 @@ echo "------------------------"
 echo -e "${gl_lan}萊卡雲 香港CN2 GIA 韓國雙ISP 美國CN2 GIA 優惠活動${gl_bai}"
 echo -e "${gl_bai}網址: https://www.lcayun.com/aff/ZEXUQBIM${gl_bai}"
 echo "------------------------"
-echo -e "${gl_lan}RackNerd 10.99刀每年 美国 1核心 1G内存 20G硬盘 1T流量每月${gl_bai}"
+echo -e "${gl_lan}RackNerd 10.99刀每年 美國 1核心 1G記憶體 20G硬碟 1T流量每月${gl_bai}"
 echo -e "${gl_bai}網址: https://my.racknerd.com/aff.php?aff=5501&pid=879${gl_bai}"
 echo "------------------------"
 echo -e "${gl_zi}Hostinger 52.7刀每年 美國 1核心 4G記憶體 50G硬碟 4T流量每月${gl_bai}"
@@ -14611,7 +14611,7 @@ echo "軟體重啟 k restart sshd | k 重啟 sshd"
 echo "軟體狀態檢視 k status sshd | k 狀態 sshd"
 echo "軟體開機啟動 k enable docker | k autostart docke | k 開機啟動 docker"
 echo "網域憑證申請 k ssl"
-echo "網域名稱憑證到期查詢 k ssl ps"
+echo "域名证书到期查询    k ssl ps"
 echo "docker管理平面 k docker"
 echo "docker環境安裝 k docker install |k docker 安裝"
 echo "docker容器管理 k docker ps |k docker 容器"
